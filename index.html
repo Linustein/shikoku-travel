@@ -175,21 +175,6 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
 }
 @media (hover:hover){ .nav-links a:hover{color:var(--ink)} }
 
-/* 下載原始碼按鈕 */
-.dl-btn{
-  display:inline-flex;align-items:center;gap:5px;flex:none;
-  min-height:36px;padding:0 12px;border-radius:999px;
-  background:var(--pink);border:2.5px solid var(--ink);
-  font-size:13px;color:var(--ink);white-space:nowrap;
-  transition:transform .15s ease;
-}
-.dl-btn svg{width:15px;height:15px}
-@media (hover:hover){ .dl-btn:hover{transform:translateY(-1px)} }
-@media (max-width:520px){
-  .dl-btn{padding:0 9px}
-  .dl-btn span{display:none}
-}
-
 /* ---------- Hero ---------- */
 .hero{padding:calc(var(--nav-h) + 26px) 0 8px}
 .hero-card{
@@ -249,35 +234,6 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
 }
 .sec-head h2{font-size:clamp(21px,5.6vw,28px)}
 .sec-head p{font-size:13.5px;color:var(--sub);margin-top:2px}
-
-/* ---------- 航班 ---------- */
-.flight-grid{display:grid;gap:14px}
-@media (min-width:720px){ .flight-grid{grid-template-columns:1fr 1fr} }
-.flight{padding:18px 16px 16px;position:relative}
-.flight-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.flight-dir{font-size:13px;color:var(--sub)}
-.flight-no{
-  border:2px solid var(--ink);border-radius:999px;background:var(--blue);
-  padding:1px 11px;font-size:13px;
-}
-.flight-route{display:flex;align-items:center;gap:10px;margin:12px 0 4px}
-.flight-pt{flex:1;min-width:0}
-.flight-pt b{display:block;font-size:clamp(22px,6vw,28px);font-weight:400;line-height:1.25}
-.flight-pt span{display:block;font-size:12.5px;color:var(--sub);line-height:1.6}
-.flight-pt--to{text-align:right}
-.flight-mid{flex:none;width:70px;text-align:center;color:var(--sub)}
-.flight-mid svg{width:100%;height:26px;display:block}
-.flight-mid em{font-style:normal;font-size:11px;display:block;margin-top:2px}
-.flight-meta{
-  margin-top:12px;padding-top:10px;border-top:2px dashed rgba(62,58,57,.35);
-  font-size:13px;color:var(--sub);display:flex;flex-wrap:wrap;gap:6px 14px;
-}
-.flight-note{
-  margin-top:14px;border:2px solid var(--ink);border-radius:var(--r-md);
-  background:var(--paper);padding:10px 13px;font-size:13px;color:var(--sub);
-}
-.flight-note b{font-weight:400;color:var(--ink)}
-.flight-cta{display:flex;flex-direction:column;justify-content:center;gap:10px}
 
 /* ---------- 每日行程 ---------- */
 .day-tabs{
@@ -364,6 +320,7 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
 /* 餐食 / 住宿小卡 */
 .day-extra{display:grid;gap:10px;margin-top:16px}
 @media (min-width:640px){ .day-extra{grid-template-columns:1fr 1fr} }
+.day-extra .mini:only-child{grid-column:1 / -1}
 .mini{
   border:2.5px solid var(--ink);border-radius:var(--r-md);
   background:var(--paper);padding:10px 12px;
@@ -447,12 +404,6 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
 .stay-row dd{margin:0;flex:1;min-width:0}
 .unset{color:var(--sub);border-bottom:2px dotted rgba(62,58,57,.4)}
 .stay-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
-.home-card{
-  margin-top:12px;border:2.5px dashed var(--ink);border-radius:var(--r-md);
-  background:var(--paper);padding:12px 14px;font-size:14px;
-  display:flex;align-items:center;gap:10px;
-}
-.home-card svg{width:26px;height:26px;flex:none}
 
 /* ---------- 待辦 ---------- */
 .todo{padding:18px 16px}
@@ -653,10 +604,6 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
     <g id="i-check" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
       <path d="M4 12.5l5 5L20 6.5"/>
     </g>
-    <g id="i-dl" fill="none" stroke="#3E3A39" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3.5v11M7.5 10.5L12 15l4.5-4.5"/>
-      <path d="M4.5 17.5v1.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-1.5"/>
-    </g>
     <g id="i-close" fill="none" stroke="#3E3A39" stroke-width="2.8" stroke-linecap="round">
       <path d="M6 6l12 12M18 6L6 18"/>
     </g>
@@ -696,14 +643,9 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
     <nav class="nav-links" id="navLinks" aria-label="主要導覽">
       <a href="#hero" data-nav="hero">首頁</a>
       <a href="#itinerary" data-nav="itinerary">每日行程</a>
-      <a href="#flights" data-nav="flights">航班資訊</a>
       <a href="#stay" data-nav="stay">住宿資訊</a>
       <a href="#todo" data-nav="todo">旅遊待辦</a>
     </nav>
-    <button class="dl-btn" type="button" id="dlBtn" title="下載這個網頁的原始碼（單一 HTML 檔）">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-dl"/></svg>
-      <span>下載</span>
-    </button>
   </div>
 </header>
 
@@ -789,10 +731,6 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
           <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cal"/></svg>
           查看每日行程
         </a>
-        <a class="btn btn--ghost" href="#flights">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plane"/></svg>
-          航班資訊
-        </a>
       </div>
 
       <div class="countdown" id="countdown">
@@ -809,23 +747,6 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:0;background:
         <div class="cd-state" id="cdState" hidden></div>
         <p class="cd-note" id="cdNote"></p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== 航班 ==================== -->
-<section class="sec" id="flights">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num" aria-hidden="true">✈</span>
-      <div>
-        <h2>航班資訊</h2>
-        <p>中華航空・桃園 ⇄ 高松（表定時間，非即時狀態）</p>
-      </div>
-    </div>
-    <div class="flight-grid" id="flightGrid"></div>
-    <div class="flight-note">
-      <b>提醒：</b>以上為行程表上的預定時間。實際起降、登機門與延誤狀況請以航空公司公告為準；本頁是純靜態網頁，不會自動更新航班狀態。
     </div>
   </div>
 </section>
@@ -957,27 +878,6 @@ const TRIP = {
   tzOffsetHours: 8     // 以台灣時間 UTC+8 計算
 };
 
-/* 航班（皆為行程表上的預定時間） */
-const FLIGHTS = [
-  {
-    dir: '去程', no: 'CI178', airline: '中華航空', date: '11/24',
-    fromCode: 'TPE', fromName: '桃園國際機場', fromCity: '台北・台灣',
-    toCode: 'TAK', toName: '高松機場', toCity: '香川・日本',
-    dep: '14:30', arr: '17:55', duration: '約 3 小時 25 分',
-    note: '抵達後以七人座車前往飯店'
-  },
-  {
-    dir: '回程', no: 'CI179', airline: '中華航空', date: '11/28',
-    fromCode: 'TAK', fromName: '高松機場', fromCity: '香川・日本',
-    toCode: 'TPE', toName: '桃園國際機場', toCity: '台北・台灣',
-    dep: '18:05', arr: '21:05', duration: '約 3 小時',
-    note: '建議提早抵達機場辦理手續'
-  }
-];
-
-/* 中華航空官方航班動態查詢頁（華航官方社群公告引用之網址） */
-const FLIGHT_STATUS_URL = 'https://www.china-airlines.com/tw/zh/fly/flight-status/index';
-
 /* 景點資料
    linkSource: 'fallback' = 用「名稱 + 所在地」產生的 Google Maps 搜尋連結（非原始連結）
    linkSource: 'original' = 使用者提供的原始 Google Maps 連結（目前僅住宿）
@@ -995,7 +895,7 @@ const PLACES = {
   },
   hotel: {
     name: 'コンフォートホテル高松', nameJa: 'コンフォートホテル高松（Comfort Hotel Takamatsu）', area: '香川縣高松市・日本',
-    desc: '本次旅程連住四晚的據點，房型為兩間大床房加一間單人房。位於高松市中心中新町，機場利木津巴士「中新町」站下車徒步約 1 分鐘。',
+    desc: '本次旅程連住四晚的據點。位於高松市中心中新町，機場利木津巴士「中新町」站下車徒步約 1 分鐘。',
     address: '〒760-0056 香川県高松市中新町2番10号',
     phone: '087-861-8411',
     mapsUrl: 'https://maps.app.goo.gl/BV16w8bPLNxAYnpd8?g_st=ic',
@@ -1161,11 +1061,8 @@ const STAY = {
   checkIn: '11/24',
   checkOut: '11/28',
   nights: 4,
-  room: '兩間大床房 + 一間單人房',
   address: '〒760-0056 香川県高松市中新町2番10号',
   phone: '087-861-8411',
-  checkInTime: null,    // 附件未提供
-  checkOutTime: null,   // 附件未提供
   place: 'hotel'
 };
 
@@ -1269,52 +1166,6 @@ function renderCountdown() {
 }
 
 /* ============================================================
-   4. 航班
-   ============================================================ */
-function renderFlights() {
-  const grid = $('#flightGrid');
-  grid.innerHTML = FLIGHTS.map(f => `
-    <article class="card flight">
-      <div class="flight-top">
-        <span class="flight-dir">${esc(f.dir)}・${esc(f.date)}</span>
-        <span class="flight-no">${esc(f.airline)} ${esc(f.no)}</span>
-      </div>
-      <div class="flight-route">
-        <div class="flight-pt">
-          <b>${esc(f.dep)}</b>
-          <span>${esc(f.fromCode)}・${esc(f.fromName)}</span>
-          <span>${esc(f.fromCity)}</span>
-        </div>
-        <div class="flight-mid" aria-hidden="true">
-          <svg viewBox="0 0 70 26" fill="none" stroke="#3E3A39" stroke-width="2.4" stroke-linecap="round">
-            <path d="M2 13h60" stroke-dasharray="5 5"/>
-            <path d="M56 6l8 7-8 7"/>
-          </svg>
-          <em>${esc(f.duration)}</em>
-        </div>
-        <div class="flight-pt flight-pt--to">
-          <b>${esc(f.arr)}</b>
-          <span>${esc(f.toCode)}・${esc(f.toName)}</span>
-          <span>${esc(f.toCity)}</span>
-        </div>
-      </div>
-      <div class="flight-meta">
-        <span>表定時間（非即時）</span>
-        <span>${esc(f.note)}</span>
-      </div>
-    </article>
-  `).join('') + `
-    <div class="card flight flight-cta">
-      <p style="font-size:14px;color:var(--sub)">想看實際起降與延誤狀況，請到華航官方航班動態頁查詢（另開新視窗）。</p>
-      <a class="btn btn--primary" href="${FLIGHT_STATUS_URL}" target="_blank" rel="noopener noreferrer">
-        ${icon('i-ext')} 查詢即時航班
-      </a>
-      <p style="font-size:12.5px;color:var(--sub)">本頁為靜態網頁，無法自動取得即時航班資料。</p>
-    </div>
-  `;
-}
-
-/* ============================================================
    5. 每日行程
    ============================================================ */
 let activeDay = 0;
@@ -1378,14 +1229,11 @@ function renderDay(idx, animate) {
       <div class="mini">
         <h4>${icon('i-bowl')} 餐食</h4>
         <p>早餐：${esc(d.meals.breakfast)}<br>中餐：${esc(d.meals.lunch)}<br>晚餐：${esc(d.meals.dinner)}</p>
-        <p style="font-size:12px;color:var(--sub);margin-top:4px">「自行安排」不代表已預訂。</p>
       </div>
-      <div class="mini">
+      ${stayPlace ? `<div class="mini">
         <h4>${icon('i-bed')} 住宿</h4>
-        ${stayPlace
-          ? `<p>${esc(stayPlace.name)}</p><p style="font-size:12px;color:var(--sub)">${esc(stayPlace.area)}</p>`
-          : `<p>溫暖的家</p><p style="font-size:12px;color:var(--sub)">行程表未安排住宿</p>`}
-      </div>
+        <p>${esc(stayPlace.name)}</p><p style="font-size:12px;color:var(--sub)">${esc(stayPlace.area)}</p>
+      </div>` : ''}
     </div>
   `;
 
@@ -1507,11 +1355,8 @@ function renderStay() {
     <dl class="stay-rows">
       <div class="stay-row"><dt>入住</dt><dd>${esc(STAY.checkIn)}</dd></div>
       <div class="stay-row"><dt>退房</dt><dd>${esc(STAY.checkOut)}（連住 ${STAY.nights} 晚）</dd></div>
-      <div class="stay-row"><dt>房型</dt><dd>${esc(STAY.room)}</dd></div>
       <div class="stay-row"><dt>地址</dt><dd>${STAY.address ? esc(STAY.address) : unset}</dd></div>
       <div class="stay-row"><dt>電話</dt><dd>${STAY.phone ? esc(STAY.phone) : unset}</dd></div>
-      <div class="stay-row"><dt>入住時間</dt><dd>${STAY.checkInTime ? esc(STAY.checkInTime) : unset}</dd></div>
-      <div class="stay-row"><dt>退房時間</dt><dd>${STAY.checkOutTime ? esc(STAY.checkOutTime) : unset}</dd></div>
     </dl>
     <div class="stay-actions">
       <a class="btn btn--primary" href="${mapsUrlFor(p)}" target="_blank" rel="noopener noreferrer">
@@ -1520,13 +1365,6 @@ function renderStay() {
       <button class="btn btn--ghost" type="button" id="stayInfo">
         ${icon('i-hotel')} 看飯店小卡
       </button>
-    </div>
-    <div class="home-card">
-      ${icon('i-home')}
-      <div>
-        <strong style="font-weight:400">11/28 第五天：溫暖的家</strong>
-        <p style="font-size:12.5px;color:var(--sub)">行程表未安排第五天住宿，因此不列訂房資訊。</p>
-      </div>
     </div>
   `;
   $('#stayInfo').addEventListener('click', () => openModal(STAY.place));
@@ -1640,45 +1478,7 @@ function initScrollSpy() {
 /* ============================================================
    10. 啟動
    ============================================================ */
-/* 下載目前這份 HTML 原始碼。
-   作法：抓取本頁自身（同源）→ 轉成 Blob → 觸發下載。
-   若抓取失敗（例如被瀏覽器限制），退回「另存頁面」提示，不假裝成功。 */
-function initDownload() {
-  var btn = document.getElementById('dlBtn');
-  if (!btn) return;
-  btn.addEventListener('click', function () {
-    var label = btn.querySelector('span');
-    var original = label ? label.textContent : '';
-    function restore() { if (label) label.textContent = original; }
-
-    fetch(location.href, { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.text();
-      })
-      .then(function (html) {
-        var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'shikoku-5days.html';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
-        if (label) label.textContent = '已下載';
-        setTimeout(restore, 2000);
-      })
-      .catch(function () {
-        if (label) label.textContent = '請按 Ctrl+S';
-        setTimeout(restore, 3000);
-      });
-  });
-}
-
 function init() {
-  initDownload();
-  renderFlights();
   renderTabs();
   renderDay(0, false);
   initTabs();
